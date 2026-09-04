@@ -135,6 +135,18 @@ uvicorn app.main:app --reload --port 8000
 
 ---
 
+## 👥 기여자 (Contributors)
+
+<div align="center">
+
+| 👤 메인 기획 & 개발 | 🤖 AI 페어 프로그래머 |
+| :---: | :---: |
+| <a href="https://github.com/youngseony"><img src="https://github.com/youngseony.png" width="90px;" alt="youngseony"/><br /><sub><b>youngseony (young)</b></sub></a><br />💡 프로젝트 기획 · 아키텍처 · 총괄 개발 | <a href="https://antigravity.google"><img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" width="90px;" alt="Google Antigravity"/><br /><sub><b>Google Antigravity</b></sub></a><br />⚡ Gemini 3.8 Flash · 풀스택 AI 어시스턴트 |
+
+</div>
+
+---
+
 ## 📄 라이선스
 MIT License. 자유롭게 수정 및 배포가 가능합니다.
 
@@ -142,6 +154,8 @@ MIT License. 자유롭게 수정 및 배포가 가능합니다.
 
 <div align="center">
 
-[![Built with Antigravity](https://img.shields.io/badge/Built%20with-Google%20Antigravity-4285F4?style=flat-square&logo=google&logoColor=white)](https://antigravity.google)
+[![Built with Antigravity](https://img.shields.io/badge/Built%20with-Google%20Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://antigravity.google)
+[![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Google%20Gemini%203.8%20Flash-8E75C4?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
 
 </div>
+

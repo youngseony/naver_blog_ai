@@ -1,7 +1,12 @@
-# Git Author & Contributor Policy
+# AI Attribution & Git Policy
 
-1. **Sole Author Rule**:
-   - All commits in this repository must strictly have ONLY `youngseony` (`young <hm22ysj@gmail.com>`) as the author and committer.
-2. **Never Add Co-authored-by**:
-   - Never, under any circumstances, include `Co-authored-by:` or `Co-author:` trailers in commit messages (e.g. referencing Google, Antigravity, or other AI accounts).
-   - Arbitrary email addresses in `Co-authored-by` can map to third-party accounts on GitHub and inadvertently add unknown individuals to the repository's Contributors list.
+1. **AI Contribution Recognition**:
+   - Google Antigravity (Gemini 3.8 Flash) is recognized and officially credited as the AI Pair Programmer in this project.
+   - The README.md prominently features the Contributors table acknowledging `youngseony` as the Lead Creator/Developer and `Google Antigravity` as the AI Pair Programmer.
+
+2. **Git Commit Attribution Rules**:
+   - Commits can record AI assistance via commit message trailers:
+     `AI-Assisted-By: Google Antigravity (Gemini 3.8 Flash)`
+   - **Crucial Caution on Co-authored-by**:
+     - Never use `antigravity@google.com` or arbitrary unregistered email addresses in `Co-authored-by:`, because GitHub's backend will link that email to unrelated third-party users (such as `shimonenator`).
+     - Only use verified, official bot identifiers or documented attribution lines so that unrelated individuals are never mistakenly added as contributors.
