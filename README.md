@@ -5,157 +5,98 @@
 
 ---
 
-## 🌟 핵심 기능 및 주요 업데이트 (v2.0)
-
-### 1. 2026 최신 트렌드 추천 주제 & 유연한 입력 워크플로우
-- **동적 연도(2026년) 반영**: 청년 주택드림 청약, 스마트스토어 마진 공식, N잡 부업, 연말정산 절세, 로컬 여행 등 최신 트렌드 주제 풀 탑재.
-- **주제 새로고침**: `[다른 추천 주제 보기]` 버튼으로 분야별 트렌드 주제를 원클릭 전환.
-- **유연한 듀얼 입력**: '포스팅 주제' 또는 '참고 내용(원문/보도자료)' 중 **하나만 입력해도** AI가 즉시 상위 노출 기획안 도출.
-
-### 2. AI 모델 등급 구분 & 무료 모델 자동 폴백 (Auto-Fallback)
-- **결제 등급별 모델 태그 분류**:
-  - 🟢 **무료 계정 권장 (Free Tier)**: `gemini-2.5-flash`, `gemini-1.5-flash` (비용 부담 없이 빠르고 안정적인 무료 기본 모델)
-  - 💎 **유료 종량제 권장 (Paid Tier)**: `gemini-3.6-flash`, `gemini-2.5-pro`, `gemini-1.5-pro` (심층 추론 및 고성능 플래그십)
-- **실시간 Google 모델 동기화**: `[Google 최신 모델 업데이트]` 버튼 클릭 시 사용자의 API 키로 현재 지원되는 최신 Gemini 모델 목록을 실시간으로 가져와 드롭다운에 반영.
-- **무료 모델 자동 폴백(Auto-Fallback) 보호**: 사용자가 선택한 유료/신규 모델이 일일 할당량(Quota) 초과나 정책 변경 등으로 호출 실패 시, 시스템이 즉시 **무료 안정화 모델(`gemini-2.5-flash`)**로 자동 전환 재시도하여 글 작성이 끊기지 않도록 보장.
-- **멀티 Provider 확장 구조**: 향후 OpenAI ChatGPT (`GPT-4o`), Anthropic Claude (`Claude 3.5 Sonnet`) API 키 입력 시 즉시 연동 가능한 탭 및 어댑터 아키텍처 적용.
-
-### 3. 부제목(Subtitle) 자동 생성 & 스마트에디터 서식 반영
-- **D.I.A.+ 가산점 서식**: 메인 제목 확정 시 모바일 첫 화면 체류 시간(Dwell Time)을 극대화하는 **매력적인 1~2줄 부제목** 자동 제안 및 수정 지원.
-- **실시간 프리뷰 연동**: 스마트에디터 상단에 세련된 서브타이틀 블록 서식으로 즉시 반영.
-
-### 4. 클린 텍스트 & AI 느낌 주는 `**` 기호 완전 배제
-- 인용구, 요약 박스, 본문 내에 AI가 생성한 티가 나는 `**` 별표 마크다운 기호를 전면 제거하고, 네이버 블로그 스마트에디터 전용 인라인 하이라이트(`<strong>` + 에메랄드 형광펜)로 100% 클린 변환.
-
-### 5. 네이버 1:1 표준 규격 & 한국인 인물 이미지 최적화
-- **1:1 정방형 썸네일**: 네이버 모바일 검색 및 피드 목록의 공식 1:1 크롭 규격에 정확히 부합하도록 대표 썸네일 기획.
-- **한국인 인물 묘사 강제**: 인물이 포함된 프롬프트에 `authentic modern South Korean, East Asian aesthetic` 고정 적용.
-- **인종 통제 네거티브 프롬프트**: 서양인/흑인/비동양인 인물이 잘못 생성되지 않도록 `caucasian, westerner, european, african, non-Korean ethnicity, foreign features`를 네거티브에 기본 탑재.
-
-### 6. 최종안 다운로드 시 ZIP 내 `images/` 폴더 이미지 실제 파일 저장
-- 글 다운로드 시 본문 마크다운/HTML/제목 텍스트 파일과 함께, 썸네일 및 본문 이미지 실제 바이너리 파일(`00_thumbnail.jpg`, `01_content.jpg` 등)이 ZIP 내 **`images/` 폴더에 완벽히 번들링**되어 바로 사용 가능.
-
-### 7. 웹앱 하단 블덱스(Blogdex) 블로그 지수 분석 센터 연동
-- 내 네이버 블로그 아이디 입력으로 [블덱스(blogdex.space)](https://blogdex.space/) 공식 분석 페이지 원클릭 연동.
-- **일반 ➡️ 준최 1~7 ➡️ 최적 1~4+** 블로그 등급별 추천 키워드 공략 가이드 제공.
+## 📌 프로젝트 버전 (Version)
+- **현재 버전**: `v2.1`
+- **배포 형태**: 브라우저 단독 실행 웹 애플리케이션 (별도 서버 설치 없이 즉시 사용 가능)
 
 ---
 
-## 🧭 5단계 제작 워크플로우
+## 🌟 핵심 기능 (Key Features)
 
-```mermaid
-graph TD
-    A[1단계: 자료 검색 & 기획] -->|키워드 및 6단계 브리핑 도출| B[2단계: 목차 설계]
-    B -->|3계층 목차 및 시각 요소 배치| C[3단계: 본문 작성 & 카피라이팅]
-    C -->|PAS 공식, 25자 제목/부제목, 모바일 4줄 호흡| D[4단계: 이미지 프롬프트]
-    D -->|1:1 썸네일 & 16:9 한국인 인물 3컷 기획| E[5단계: 스마트에디터 복사 & ZIP 배포]
-    E -->|HTML/서식 원클릭 복사, images 폴더 ZIP 패키징| F[네이버 블로그 발행 완료]
-```
+1. **실시간 검색 트렌드 & 카테고리별 스마트 셔플**
+   - 최신 고단가 인기 키워드 풀(재테크·부업, IT·AI, 여행·맛집, 건강·다이어트, 부동산·절세 등) 50선 탑재
+   - 접속 및 새로고침할 때마다 매번 새로운 추천 주제를 무작위로 추출
+   - `[AI 실시간 트렌드 뽑기]` 원클릭으로 오늘 자 실시간 급상승 트렌드 직접 도출
+   - '포스팅 주제' 또는 '참고 내용(원문)' 중 하나만 입력해도 AI 기획 자동 시작
 
-1. **1단계 (자료 검색 & 기획)**: 2026 실시간 검색 트렌드 기반 상위 노출 1·2차 타깃 키워드 및 6단계 기획 브리핑(목적, 타깃, 고통점, 솔루션, 차별화, CTA) 도출.
-2. **2단계 (목차 설계)**: 서론-본론(3개)-결론의 3계층 목차(H2, H3)와 체크리스트/인포그래픽 등 시각 장치 배치.
-3. **3단계 (본문 작성 & 카피라이팅)**: PAS 도입부, 모바일 최적화 4줄 호흡, 25자 추천 제목 3선 + 부제목 생성, 클린 서식 적용.
-4. **4단계 (맞춤형 이미지 프롬프트)**: 1:1 정방형 썸네일 1컷 + 16:9 본문 이미지 3컷에 대해 한국인 인물 및 스타일 프롬프트 기획 (내 생성 이미지 업로드 및 교체 지원).
-5. **5단계 (스마트에디터 ONE 복사 & 배포)**: 네이버 스마트에디터 본문 서식 완벽 복사, 클립보드 원클릭 전송, `images/` 폴더 번들링 ZIP 다운로드.
+2. **D.I.A.+ 가산점 부제목(Subtitle) 자동 생성 & 스마트에디터 서식**
+   - 모바일 첫 화면 체류 시간(Dwell Time)을 극대화하는 매력적인 1~2줄 서브타이틀 자동 제안
+   - 네이버 블로그 스마트에디터 상단 서브타이틀 블록 서식으로 즉시 변환
 
----
+3. **클린 텍스트 & AI 흔적(`**` 기호) 완전 배제**
+   - 마크다운 특유의 `**` 별표 기호를 전면 제거하고, 네이버 블로그 전용 인라인 강조(`<strong>` + 에메랄드 형광펜)로 100% 변환
 
-## 📁 프로젝트 폴더 구조
+4. **네이버 1:1 표준 규격 & 한국인 인물 이미지 최적화**
+   - 네이버 모바일 피드 및 검색 목록의 1:1 정방형 썸네일 규격 맞춤 기획
+   - 인물 프롬프트에 한국인 미학(`authentic modern South Korean`) 및 비동양인 배제 네거티브 프롬프트 기본 탑재
 
-```
-naver_blog_ai/
-├── frontend/                     # React 프론트엔드 (Vite + Tailwind CSS)
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Header.jsx        # 상단 네비게이션 & 새글/히스토리/설정 버튼
-│   │   │   ├── StepBar.jsx       # 5단계 위저드 진행률 바
-│   │   │   ├── Step1Research.jsx # 2026 트렌드 키워드 & 기획 브리핑
-│   │   │   ├── Step2Outline.jsx  # 3계층 목차 및 시각요소 배치 에디터
-│   │   │   ├── Step3Content.jsx  # 본문 작성, 제목/부제목 에디터 & 스마트에디터 뷰
-│   │   │   ├── Step4Images.jsx   # 1:1 썸네일 & 한국인 인물 이미지 프롬프트
-│   │   │   ├── Step5Export.jsx   # 서식 복사 & images 폴더 번들 ZIP 다운로드
-│   │   │   ├── BlogdexWidget.jsx # 하단 블덱스(Blogdex) 블로그 지수 분석 센터
-│   │   │   ├── SettingsModal.jsx # API 키, 무료/유료 모델 선택 & 실시간 업데이트
-│   │   │   └── HistoryDrawer.jsx # 작성 히스토리 보관함
-│   │   ├── utils/
-│   │   │   ├── api.js            # Gemini API 호출, 자동 폴백, 모델 동기화
-│   │   │   ├── clientServices.js # 브라우저 단독 HTML 변환 및 목 서비스
-│   │   │   └── clipboard.js      # 스마트에디터 ONE 클립보드 전송 엔진
-│   │   ├── App.jsx               # 메인 레이아웃 및 상태 관리
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
-├── backend/                      # FastAPI 백엔드 (Python, 선택적 독립 실행용)
-│   ├── app/
-│   │   ├── routers/              # workflow, history, settings 엔드포인트
-│   │   ├── services/             # prompt_templates, naver_editor_formatter
-│   │   ├── config.py
-│   │   ├── database.py           # SQLite 로컬 저장소
-│   │   └── main.py
-│   └── requirements.txt
-├── .github/
-│   └── workflows/
-│       └── deploy.yml            # GitHub Pages 자동 빌드 및 배포 액션
-└── README.md
-```
+5. **ZIP 다운로드 시 `images/` 폴더 내 실제 이미지 번들링 저장**
+   - 글 다운로드 시 본문 텍스트 파일과 함께 썸네일 및 본문 이미지 파일이 ZIP 내 `images/` 폴더에 완벽히 저장되어 바로 사용 가능
+
+6. **블덱스(Blogdex) 블로그 지수 분석기 링크 제공**
+   - 내 네이버 블로그 아이디 입력 시 [블덱스(blogdex.space)](https://blogdex.space/) 공식 분석 페이지로 원클릭 이동
+   - 일반 ➡️ 준최 1~7 ➡️ 최적 1~4+ 블로그 등급별 공략 가이드 제공
 
 ---
 
-## 💻 로컬 개발 환경 실행 방법
+## 🧭 사용 설명서 (5단계 워크플로우)
 
-### 1. 프론트엔드 실행 (권장)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-- 로컬 개발 서버: `http://localhost:5173`
-- 브라우저 단독 모드로 서버 없이도 Gemini API 키를 입력해 모든 기능을 100% 즉시 이용할 수 있습니다.
+### 1단계: 자료 검색 & 기획
+- 포스팅 주제나 참고하고 싶은 원문 기사/메모를 입력합니다. (아이디어가 없을 때는 하단의 추천 트렌드 주제 칩을 클릭하세요.)
+- `[기획 브리핑 & 키워드 도출]` 버튼을 누르면 AI가 검색 트렌드를 분석하여 메인/서브 키워드와 6단계 기획 브리핑(목적, 타깃, 핵심 고민, 솔루션, 차별점, 행동 유도)을 도출합니다.
 
-### 2. 백엔드 실행 (선택 사항)
-```bash
-cd backend
-python -m venv venv
-
-# Windows:
-.\venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
-
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-- 백엔드 API 문서: `http://localhost:8000/docs`
+![1단계 자료 검색 및 기획](docs/screenshots/01_step1_research.png)
 
 ---
 
-## 🔒 보안 및 API 키 관리
-- 입력하신 Google Gemini API 키는 외부 서버로 전송되지 않으며, 사용자 브라우저의 `localStorage`에만 안전하게 암호화 보관됩니다.
-- API 키가 없더라도 시스템 내장 지능형 시뮬레이션 모드를 통해 모든 단계를 무료로 체험하실 수 있습니다.
+### 2단계: 3계층 목차 설계
+- 서론 - 본론(3개 섹션) - 결론의 3계층 목차 구조(H2, H3)를 설계합니다.
+- 체크리스트, 요약 박스, 인포그래픽 등 독자 체류 시간을 늘려주는 시각적 장치가 적재적소에 자동 배치됩니다. 필요에 따라 섹션을 추가하거나 직접 수정할 수 있습니다.
+
+![2단계 목차 설계](docs/screenshots/02_step2_outline.png)
 
 ---
 
-## 👥 기여자 (Contributors)
+### 3단계: 본문 작성 & 카피라이팅
+- PAS(Problem-Agitate-Solution) 공식과 모바일 가독성에 최적화된 3~4줄 호흡으로 본문이 작성됩니다.
+- 추천 제목 3선 중 하나를 선택하거나 직접 수정할 수 있으며, 모바일 클릭률을 높이는 **부제목(Subtitle)**도 함께 제공됩니다.
+- 우측 상단 탭을 통해 '스마트에디터 실시간 뷰'와 '마크다운 원문 편집'을 자유롭게 전환할 수 있습니다.
 
-<div align="center">
-
-| 👤 메인 기획 & 개발 | 🤖 AI 페어 프로그래머 |
-| :---: | :---: |
-| <a href="https://github.com/youngseony"><img src="https://github.com/youngseony.png" width="90px;" alt="youngseony"/><br /><sub><b>youngseony (young)</b></sub></a><br />💡 프로젝트 기획 · 아키텍처 · 총괄 개발 | <a href="https://antigravity.google"><img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" width="90px;" alt="Google Antigravity"/><br /><sub><b>Google Antigravity</b></sub></a><br />⚡ Gemini 3.8 Flash · 풀스택 AI 어시스턴트 |
-
-</div>
+![3단계 본문 작성 및 스마트에디터 실시간 뷰](docs/screenshots/03_step3_content.png)
 
 ---
 
-## 📄 라이선스
-MIT License. 자유롭게 수정 및 배포가 가능합니다.
+### 4단계: 맞춤형 이미지 프롬프트 기획
+- 네이버 블로그 모바일 최적 규격인 **1:1 정방형 대표 썸네일 1컷**과 **16:9 본문 시각 자료 3컷**에 대한 상세 영문 프롬프트가 자동 기획됩니다.
+- 미드저니, DALL-E 3, ImageFX 등에서 바로 사용할 수 있도록 한국인 인물 묘사 및 네거티브 프롬프트가 포함되어 있습니다.
+- 직접 생성한 이미지 파일이 있다면 해당 카드에 업로드하여 즉시 교체할 수 있습니다.
+
+![4단계 맞춤형 이미지 프롬프트 기획](docs/screenshots/04_step4_images.png)
 
 ---
 
-<div align="center">
+### 5단계: 스마트에디터 ONE 복사 & 배포
+- **`[스마트에디터 ONE 서식 복사]`** 버튼을 누르면 인용구, 형광펜, 체크리스트, 구분선 서식이 클립보드에 복사됩니다. 네이버 블로그 글쓰기 창에서 `Ctrl + V`로 붙여넣으면 서식이 100% 그대로 적용됩니다.
+- **`[패키지 ZIP 다운로드]`** 버튼을 누르면 본문 텍스트 파일들과 함께 생성된 이미지 실제 파일들이 `images/` 폴더에 담겨 압축 파일로 다운로드됩니다.
 
-[![Built with Antigravity](https://img.shields.io/badge/Built%20with-Google%20Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://antigravity.google)
-[![Powered by Gemini](https://img.shields.io/badge/Powered%20by-Google%20Gemini%203.8%20Flash-8E75C4?style=for-the-badge&logo=googlegemini&logoColor=white)](https://ai.google.dev/)
+![5단계 스마트에디터 복사 및 최종 배포](docs/screenshots/05_step5_export.png)
 
-</div>
+---
 
+## 🔒 보안 및 API 키 관리 안내
+
+### 1. 철저한 로컬 브라우저 격리 보안
+- 사용자가 입력한 Google Gemini API 키는 **어떠한 외부 서버로도 전송되지 않으며**, 오직 사용자의 개인 브라우저 내부 저장소(`localStorage`)에만 안전하게 보관됩니다.
+- GitHub Pages 상에서 동작하는 100% 클라이언트 사이드 웹 애플리케이션으로, 개인정보 유출 위험 없이 안심하고 이용하실 수 있습니다.
+
+### 2. Google AI Studio 무료 API 키 발급 방법 (1분 소요)
+1. [Google AI Studio (https://aistudio.google.com/)](https://aistudio.google.com/)에 접속하여 구글 계정으로 로그인합니다.
+2. 좌측 상단의 **`[Get API key]`** 메뉴를 클릭합니다.
+3. **`[Create API key]`** 버튼을 눌러 새 키를 생성한 후 복사합니다.
+4. 웹앱 상단의 **`[⚙️ 설정]`** 아이콘을 클릭하고 복사한 API 키를 붙여넣은 뒤 **`[설정 저장]`**을 누르면 완료됩니다.
+
+### 3. API 키 입력 유의사항 & 무료 모델 자동 보호
+- **무료 티어(Free Tier) 완전 무료**: Google Gemini API는 일일 무료 호출 할당량(RPM/RPD)을 넉넉하게 제공하므로, 개인 블로그 작성 용도로는 결제 등록 없이 **완전 무료**로 이용하실 수 있습니다.
+- **추천 모델**: 비용 부담 없이 빠르고 안정적인 `gemini-2.5-flash` 모델을 기본 권장합니다.
+- **무료 모델 자동 폴백(Auto-Fallback)**: 사용자가 선택한 특정 모델이 Google 정책 변경이나 일일 할당량 초과로 일시적인 오류를 반환하더라도, 시스템이 자동으로 **무료 안정화 모델**로 전환하여 글 작성이 중단되지 않도록 보호합니다.
+- **API 키 없이도 체험 가능**: API 키를 입력하지 않더라도 내장된 지능형 시뮬레이션 모드를 통해 모든 단계를 제한 없이 무료로 체험해 보실 수 있습니다.
