@@ -401,6 +401,45 @@ export const WorkflowAPI = {
     return { source: 'mock_client', data: { images: getClientMockImages(title, primaryKeyword) } };
   },
 
+  generateTrendingTopics: async (category = 'all') => {
+    const serverRes = await apiRequest('/api/workflow/trending-topics', 'POST', { category });
+    if (serverRes && serverRes.topics) return serverRes.topics;
+
+    const categoryNames = {
+      all: '네이버 블로그 실시간 인기 검색',
+      economy: '재테크·부업·절세',
+      tech: 'IT·AI·생산성',
+      travel: '여행·맛집·핫플',
+      health: '건강·다이어트·일상',
+      realestate: '부동산·청약·생활정보'
+    };
+    const targetCategory = categoryNames[category] || '종합';
+
+    const currentYear = new Date().getFullYear();
+    const prompt = `당신은 네이버 블로그 상위 0.1% 노출 전문 에디터입니다.
+${currentYear}년 최신 검색 트렌드와 네이버 D.I.A.+ 알고리즘에 최적화된 '${targetCategory}' 분야의 클릭률 높은 포스팅 추천 주제 4개를 작성해주세요.
+
+[작성 조건]
+1. 모바일 검색 시 클릭률(CTR)과 체류 시간을 극대화할 수 있는 구체적인 25자 내외 제목 형태.
+2. 실용적인 정보성/가이드형 제목.
+3. 반드시 아래 JSON 배열 형식으로만 응답해주세요. 설명이나 마크다운 백틱 없이 순수 JSON만 출력하세요.
+["주제 1", "주제 2", "주제 3", "주제 4"]`;
+
+    try {
+      const resultText = await callGeminiDirectClient(prompt);
+      if (resultText) {
+        const clean = resultText.replace(/```json/gi, '').replace(/```/g, '').trim();
+        const parsed = JSON.parse(clean);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.slice(0, 4);
+        }
+      }
+    } catch (e) {
+      console.warn('AI 트렌드 주제 생성 중 오류 또는 API 키 없음:', e.message);
+    }
+    return null;
+  },
+
   savePost: async (postData) => {
     const serverRes = await apiRequest('/api/workflow/save', 'POST', postData);
     if (serverRes) return serverRes;

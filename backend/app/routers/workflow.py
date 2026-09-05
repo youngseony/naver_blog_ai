@@ -175,6 +175,37 @@ async def step4_images(req: ImagesRequest):
         logger.error(f"Step 4 failed: {e}")
         return {"source": "mock_fallback", "data": {"images": generate_mock_images(req.title, req.primary_keyword)}, "error": str(e)}
 
+@router.post("/trending-topics")
+async def get_trending_topics(payload: Dict[str, Any] = None):
+    """실시간 트렌드 포스팅 추천 주제 4선 생성"""
+    category = (payload or {}).get("category", "all")
+    category_names = {
+        "all": "네이버 블로그 실시간 인기 검색 종합",
+        "economy": "재테크·부업·절세",
+        "tech": "IT·AI·생산성",
+        "travel": "여행·맛집·핫플",
+        "health": "건강·다이어트·일상",
+        "realestate": "부동산·청약·생활정보"
+    }
+    cat_name = category_names.get(category, "종합")
+    api_key = await get_active_api_key()
+    if not api_key:
+        return {"topics": None}
+
+    prompt = f"""당신은 네이버 블로그 전문 수석 에디터입니다.
+2026년 최신 검색 트렌드와 D.I.A.+ 알고리즘에 최적화된 '{cat_name}' 분야의 클릭률 높은 포스팅 추천 주제 4개를 작성해주세요.
+반드시 아래 JSON 배열 형식으로만 응답하세요.
+["주제 1", "주제 2", "주제 3", "주제 4"]"""
+
+    try:
+        raw = await generate_with_gemini(prompt, system_instruction="JSON 배열만 출력하세요.")
+        data = clean_json_response(raw)
+        if isinstance(data, list) and len(data) > 0:
+            return {"topics": data[:4]}
+    except Exception as e:
+        logger.warning(f"Backend trending topics error: {e}")
+    return {"topics": None}
+
 @router.post("/save")
 async def save_workflow_post(req: SavePostRequest):
     """최종 작성된 포스팅을 SQLite DB에 저장 또는 갱신"""
