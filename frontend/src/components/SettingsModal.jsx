@@ -159,7 +159,7 @@ export default function SettingsModal({ isOpen, onClose }) {
                 Google Gemini API Key
               </label>
               <a
-                href="https://aistudio.google.com/app/apikey"
+                href="https://aistudio.google.com/api-keys"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-emerald-600 hover:underline flex items-center gap-1 font-semibold"

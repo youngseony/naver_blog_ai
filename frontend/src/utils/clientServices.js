@@ -121,6 +121,8 @@ export function clientMarkdownToSmartEditorHtml(markdownText, title = '', subtit
   return htmlParts.join('\n');
 }
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 // 클라이언트 사이드 Mock 생성기
 export function getClientMockResearch(topic) {
   const baseKeyword = topic.split(' ')[0] || '네이버 블로그 마케팅';
@@ -129,7 +131,7 @@ export function getClientMockResearch(topic) {
     sub_keywords: [
       `${baseKeyword} 최적화 가이드`,
       `${baseKeyword} 방문자 늘리기`,
-      `2025 ${baseKeyword} 필수 조건`,
+      `${CURRENT_YEAR} ${baseKeyword} 필수 조건`,
       `${baseKeyword} C-Rank 알고리즘`
     ],
     briefing: {
@@ -196,7 +198,7 @@ export function getClientMockContent(title, primaryKeyword) {
   const titles = [
     `아직도 이것 몰라요? ${primaryKeyword} 상위 1% 비밀`,
     `방문자 10배 폭발시키는 ${primaryKeyword} 3가지 공식`,
-    `2025 최신판 ${primaryKeyword} 완벽 정리 (이것만 보세요)`
+    `${CURRENT_YEAR} 최신판 ${primaryKeyword} 완벽 정리 (이것만 보세요)`
   ];
   const selectedTitle = title || titles[0];
 

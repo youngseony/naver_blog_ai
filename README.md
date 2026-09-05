@@ -90,10 +90,9 @@
 - GitHub Pages 상에서 동작하는 100% 클라이언트 사이드 웹 애플리케이션으로, 개인정보 유출 위험 없이 안심하고 이용하실 수 있습니다.
 
 ### 2. Google AI Studio 무료 API 키 발급 방법 (1분 소요)
-1. [Google AI Studio (https://aistudio.google.com/)](https://aistudio.google.com/)에 접속하여 구글 계정으로 로그인합니다.
-2. 좌측 상단의 **`[Get API key]`** 메뉴를 클릭합니다.
-3. **`[Create API key]`** 버튼을 눌러 새 키를 생성한 후 복사합니다.
-4. 웹앱 상단의 **`[⚙️ 설정]`** 아이콘을 클릭하고 복사한 API 키를 붙여넣은 뒤 **`[설정 저장]`**을 누르면 완료됩니다.
+1. [Google AI Studio API 키 발급 페이지 (https://aistudio.google.com/api-keys)](https://aistudio.google.com/api-keys)에 접속하여 구글 계정으로 로그인합니다.
+2. 화면의 **`[Create API key]`** (또는 `[API 키 만들기]`) 버튼을 눌러 새 키를 생성한 후 복사합니다.
+3. 웹앱 상단의 **`[⚙️ 설정]`** 아이콘을 클릭하고 복사한 API 키를 붙여넣은 뒤 **`[설정 저장]`**을 누르면 완료됩니다.
 
 ### 3. API 키 입력 유의사항 & 무료 모델 자동 보호
 - **무료 티어(Free Tier) 완전 무료**: Google Gemini API는 일일 무료 호출 할당량(RPM/RPD)을 넉넉하게 제공하므로, 개인 블로그 작성 용도로는 결제 등록 없이 **완전 무료**로 이용하실 수 있습니다.
